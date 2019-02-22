@@ -1,0 +1,8 @@
+1. What does File -> Revert do?
+	A: It changes back the indentation to how it was before we fixed it. Revert will undo the last thing we changed. 
+	
+2. Describe what happens when you walk through the loop in showPeople in the debug mode?
+	A: It loops through the friends array list to print out every object. When it prints, it goes to our toString method to get the information we want to print. 
+	
+3. What do you notice when you comment out the toString function of the Friend class?
+	A: It prints out the type of object and then the memory location of the object rather than the name and email.
