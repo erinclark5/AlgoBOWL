@@ -1,6 +1,0 @@
-1. BigDecimal represents numbers with an exact precision, while doubles have certain precision. 
-When dealing with money, precision is a necessity, so using BigDecimal is better practice. 
-
-2. (1) In the catch block, do not leave it empty or return null. Report the cause of the error
-(2) Declare the specific checked exception that your method can throw.
-(3) Throw early catch late - more likely to throw in the low-level methods. Wait until you have all the information to handle properly.
