@@ -45,6 +45,7 @@ public class Algo {
 			//sort array
 		}
 		else {
+			 
 			modifiedBinary(0, sums.size()-1, valueNeeded);
 		}
 	}
@@ -67,7 +68,7 @@ public class Algo {
 		return 0;
 			//return sums.get(l) + findAdd(x, sums.get(l));
 	}
-	
+
 	
 	public static void main(String[] args) {
 		Algo a = new Algo();
@@ -82,7 +83,7 @@ public class Algo {
 			}
 			
 		}
-
+		
 			//double the max value of the sums array until that value is larger than the current input we are at
 			//subtract max value from the current input if it is not equal to the value we are looking for
 			//modified binary search to find the value we need that when added to the max value equals the current input
