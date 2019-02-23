@@ -32,35 +32,40 @@ public class OutputAlgo {
 		int largestSum = sums.get(sums.size()-1);
 		while(2*largestSum <= currentValue) {
 			sums.add(2*largestSum);
-			//keep track
-			//sort array
+			System.out.println(largestSum + " + " + largestSum + " = " + (largestSum*2));
+			//sort array not needed because this value will always be the largest
 			largestSum = sums.get(sums.size()-1);		
 		}
 	}
 
 	public void findAdd(int curInput, int maxValue) {
 		int valueNeeded = curInput - maxValue;
+		int add = 0;
 		if(sums.contains(valueNeeded)) {
-			sums.add(maxValue + valueNeeded);
-			//keep track
-			//sort array
+			sums.add(maxValue + valueNeeded);//can be changed to curInput
+			System.out.println(maxValue + " + " + valueNeeded + " = " + (maxValue + valueNeeded));
+			Collections.sort(sums);
 		}
 		else {
-
-			findClosest(valueNeeded);
+		
+			add = findClosest(valueNeeded);
+			findAdd(valueNeeded, add);
+			sums.add(curInput);
+			System.out.println(maxValue + " + " + valueNeeded + " = " + (maxValue +valueNeeded));
 		}
+		
 	}
 
 
 	public int findClosest(int target) {
 		int n = sums.size()-1;
-		if(target <= sums.get(0)) return sums.get(0);
-		if(target >= sums.get(n-1)) return sums.get(n-1);
+		if(target == sums.get(0)) return sums.get(0); // Since sums.get(0) will always return 1 we do not need to check lower than 1
+		if(target >= sums.get(n - 1)) return sums.get(n - 1); // 
 
 		int i = 0, j = n, mid = 0;
 		
 		while(i < j) {
-			mid = (i+j)/2;
+			mid = i + (j-i)/2;
 			if(sums.get(mid) == target)
 				return sums.get(mid);
 			if(target < sums.get(mid)) {
@@ -88,20 +93,19 @@ public class OutputAlgo {
 
 	public static void main(String[] args) {
 		OutputAlgo a = new OutputAlgo();
-		//a.readFile();
+		a.readFile();
 		//look at the next value in the inputs array
-		/*for(int i = 0; i < a.inputs.size(); i++) {
+		for(int i = 0; i < a.inputs.size(); i++) {
 			if(2*a.sums.get(a.sums.size() - 1) <= a.inputs.get(i)) {
 				a.doubleLargest(i);
 			}
 			if(a.sums.get(a.sums.size() - 1) != a.inputs.get(i)) {
 				a.findAdd(a.inputs.get(i), a.sums.get(a.sums.size()-1));
+				a.sums.add(a.inputs.get(i));
 			}
 
-		}*/
-		a.sums.add(2);
-		a.sums.add(5);
-		System.out.println(a.findClosest(4));
+		}
+	
 	}
 
 
